@@ -1,11 +1,13 @@
 === Themeforest Specific Theme Check ===
-Author URI: http://ikreativ.com/
-Plugin URL: https://github.com/iKreativ/Envato-Theme-Check
-Requires at Least: 3.7
-Tested Up To: 4.4
-Tags: template, theme, check, checker, tool, wordpress, wordpress.org, upload, uploader, test, guideline, review
-
-Envato Theme Check is a modified fork of the original Theme Check by Otto42 with additional Themeforest specific WordPress checks.
+Plugin Name: Envato Theme Check
+Plugin URI: https://github.com/envato/Envato-Theme-Check
+Description: Envato Theme Check is a modified fork of the original Theme Check by Otto42 with additional Themeforest specific WordPress checks.
+Author: Scott Parry
+Author URI: https://envato.com
+Version: 20180222
+Text Domain: theme-check
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 

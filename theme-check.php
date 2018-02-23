@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Envato Theme Check
-Plugin URI: https://github.com/iKreativ/Envato-Theme-Check
+Plugin URI: https://github.com/envato/Envato-Theme-Check
 Description: Envato Theme Check is a modified fork of the original Theme Check by Otto42 with additional Themeforest specific WordPress checks.
 Author: Scott Parry
-Author URI: https://ikreativ.com
+Author URI: https://envato.com
 Version: 20180222
 Text Domain: theme-check
 License: GPLv2
