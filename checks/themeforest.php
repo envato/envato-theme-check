@@ -9,7 +9,7 @@ class Themeforest implements themecheck {
 	{
 		$ret = true;
 
-		$checks = array(
+		$req_checks = array(
 			'/@import/'                                 => __( 'Do not use @import. Instead, use wp_enqueue to load any external stylesheets and fonts correctly', 'theme-check' ),
 			'/.bypostauthor{}/'                         => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/.bypostauthor {}/'                        => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
@@ -22,28 +22,48 @@ class Themeforest implements themecheck {
 			'/.wp-caption-text{}/'                      => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/.wp-caption-text {}/'                     => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/key=AIza/'                                => __( 'Remove personal API key(s). These should be user options', 'theme-check' ),
-			'/@\$/'                                     => __( 'Possible error suppression is being used', 'theme-check' ),
-			'/@include/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
-			'/@require/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
-			'/@file/'                                   => __( 'Possible error suppression is being used', 'theme-check' ),
 			'/[^a-z0-9](?<!_)mail\s?\(/'                => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)wp_mail\s?\(/'             => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)mkdir\s?\(/'               => __( 'mkdir() is not allowed. Use wp_mkdir_p() instead', 'theme-check' ),
 			'/[^a-z0-9](?<!_)(dirname|basename)\s?\(/'  => __( 'Directory path should be get_template_directory() and not dirname( FILE ) or basename( FILE )', 'theme-check' ),
 			'/[^a-z0-9](?<!_)user_contactmethods\s?\(/' => __( 'Extending user_contactmethods is plugin territory', 'theme-check' ),
+			'/style_loader_tag/'                        => __( 'Do not remove core functionality', 'theme-check' ),
+			'/script_loader_tag/'                       => __( 'Do not remove core functionality', 'theme-check' ),
+		);
+
+		$warn_checks = array(
+			'/@\$/'                                     => __( 'Possible error suppression is being used', 'theme-check' ),
+			'/@include/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
+			'/@require/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
+			'/@file/'                                   => __( 'Possible error suppression is being used', 'theme-check' ),
 			'/[^a-z0-9](?<!_)balanceTags\s?\(/'         => __( 'Possible data validation issues found. balanceTags() does not escape data', 'theme-check' ),
 			'/[^a-z0-9](?<!_)force_balance_tags\s?\(/'  => __( 'Possible data validation issues found. force_balance_tags() does not escape data', 'theme-check' ),
 			'/echo \$/'                                 => __( 'Possible data validation issues found. All dynamic data must be correctly escaped for the context where it is rendered', 'theme-check' ),
 			'/[^a-z0-9](?<!_)\$_SERVER\s?/'             => __( 'PHP Global Variable found. Ensure the context is safe and reliable', 'theme-check' ),
-			'/style_loader_tag/'                        => __( 'Do not remove core functionality', 'theme-check' ),
-			'/script_loader_tag/'                       => __( 'Do not remove core functionality', 'theme-check' ),
 		);
 
 		$grep = '';
 
 		foreach ( $php_files as $php_key => $phpfile )
 		{
-			foreach ( $checks as $key => $check )
+			foreach ( $req_checks as $key => $check )
+			{
+				checkcount();
+
+				if ( preg_match( $key, $phpfile, $matches ) )
+				{
+					$filename = tc_filename( $php_key );
+					$error = ltrim( trim( $matches[0], '(' ) );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
+				}
+			}
+		}
+
+		foreach ( $php_files as $php_key => $phpfile )
+		{
+			foreach ( $warn_checks as $key => $check )
 			{
 				checkcount();
 
@@ -60,7 +80,7 @@ class Themeforest implements themecheck {
 
 		foreach ( $css_files as $php_key => $phpfile )
 		{
-			foreach ( $checks as $key => $check )
+			foreach ( $req_checks as $key => $check )
 			{
 				checkcount();
 
@@ -69,7 +89,24 @@ class Themeforest implements themecheck {
 					$filename = tc_filename( $php_key );
 					$error = ltrim( trim( $matches[0], '(' ) );
 					$grep = tc_grep( $error, $php_key );
-					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING:', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
+				}
+			}
+		}
+
+		foreach ( $css_files as $php_key => $phpfile )
+		{
+			foreach ( $warn_checks as $key => $check )
+			{
+				checkcount();
+
+				if ( preg_match( $key, $phpfile, $matches ) )
+				{
+					$filename = tc_filename( $php_key );
+					$error = ltrim( trim( $matches[0], '(' ) );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
 					$ret = false;
 				}
 			}
