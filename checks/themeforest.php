@@ -23,7 +23,6 @@ class Themeforest implements themecheck {
 			'/.wp-caption-text {}/'                     => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/key=AIza/'                                => __( 'Remove personal API key(s). These should be user options', 'theme-check' ),
 			'/[^a-z0-9](?<!_)mkdir\s?\(/'               => __( 'mkdir() is not allowed. Use wp_mkdir_p() instead', 'theme-check' ),
-			'/[^a-z0-9](?<!_)(dirname|basename)\s?\(/'  => __( 'Directory path should be get_template_directory() and not dirname( FILE ) or basename( FILE )', 'theme-check' ),
 			'/[^a-z0-9](?<!_)user_contactmethods\s?\(/' => __( 'Extending user_contactmethods is plugin territory', 'theme-check' ),
 			'/style_loader_tag/'                        => __( 'Do not remove core functionality', 'theme-check' ),
 			'/script_loader_tag/'                       => __( 'Do not remove core functionality', 'theme-check' ),
