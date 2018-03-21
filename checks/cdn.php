@@ -28,6 +28,8 @@ class CDNCheck implements themecheck {
 			'jquery'                => 'code.jquery.com/jquery-',
 			'respond-js'            => 'oss.maxcdn.com/libs/respond.js',
 			'google-cdn'            => 'ajax.googleapis.com',
+			'cloudflare'            => 'cdnjs.cloudflare.com',
+			'jsdelivr'              => 'cdn.jsdelivr.net',
 		);
 
 		foreach( $cdn_list as $cdn_slug => $cdn_url ) {
