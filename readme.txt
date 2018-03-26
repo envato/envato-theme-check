@@ -53,6 +53,10 @@ comments, or feedback:[[br]]
 * Use the #wordpress-themes IRC channel on Freenode.' );`
 If **either** of these two vars are defined a new trac tickbox will appear next to the *Check it!* button.
 
+== WP CLI Support ==
+* `wp theme review list` to list all themes
+* `wp theme review check <themename>` to review a theme
+
 == Changelog ==
 = 20151211.1 =
 * Full sync with Github and all the changes that have happened there.
