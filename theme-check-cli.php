@@ -37,6 +37,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 			WP_CLI::line( $slug . ': ' . $theme->get('Name') );
 		}
 	}
+
 	/**
 	 * Check a theme
 	 *
@@ -95,7 +96,20 @@ class ThemeCheckCLI extends WP_CLI_Command {
 			WP_CLI::line( WP_CLI::colorize( "%RFail:%n Theme did not pass review." ) );
 		}
 	}
+
+	/**
+	 * Check for the active theme
+	 *
+	 */
+	public function active(){
+		$active_theme = wp_get_theme();
+		$theme_folder_name = $active_theme->template;
+		WP_CLI::success('Checking Theme Name: '.$theme_folder_name);
+		$this->check( array($theme_folder_name), array() );
+	}
+
 }
+
 class ThemeCheckCLILogger extends WP_CLI\Loggers\Regular {
 	public function _line( $message, $label, $color, $handle = STDOUT ) {
 		if ( ! empty( $label ) ) {

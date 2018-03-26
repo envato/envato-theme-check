@@ -56,6 +56,7 @@ If **either** of these two vars are defined a new trac tickbox will appear next 
 == WP CLI Support ==
 * `wp theme review list` to list all themes
 * `wp theme review check <themename>` to review a theme
+* `wp theme review active` to review the active theme
 
 == Changelog ==
 = 20151211.1 =
