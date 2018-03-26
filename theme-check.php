@@ -11,6 +11,10 @@ License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	include 'theme-check-cli.php';
+}
+
 class EnvatoThemeCheck {
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'tc_i18n' ) );
