@@ -43,9 +43,28 @@ class ThemeCheckCLI extends WP_CLI_Command {
 	 *
 	 * <theme>
 	 * : The theme slug to check
+	 *
+	 * [--format=<format>]
+	 * : set to true to format as json. Default: false
+	 *
 	 */
-	public function check( $args = array(), $assoc_args = array() ){
+	public function check( $args = array(), $assoc_args = array() ) {
+
+		// check if format is true
+		if( 'true' == $assoc_args['format'] ) {
+			// WP_CLI::success('Theme Check will format in JSON');
+		} else {
+			// WP_CLI::log('JSON False');
+		}
+
 		global $checkcount, $themechecks;
+
+		// empty array for the json format
+		$required_json = array();
+		$warnings_json = array();
+		$reccomended_json = array();
+		$errors_json = array();
+
 		$theme = $this->fetcher->get_check( $args[0] );
 		$files = $theme->get_files( null, -1 );
 		$css = $php = $other = array();
@@ -76,17 +95,44 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		foreach ( $errors as $error ) {
 			list( $type, $message ) = explode( ':', $error, 2 );
 			if ( 'REQUIRED' == trim( $type ) ) {
-				WP_CLI::warning( '%rRequired:%n '.trim( $message ) );
+
+				if( 'true' == $assoc_args['format'] ) {
+					array_push($required_json, "Required: ".trim( $message ));
+				} else {
+					WP_CLI::warning( '%rRequired:%n '.trim( $message ) );
+				}
 				$pass = false;
+
 			} elseif ( 'WARNING' == trim( $type ) ) {
-				WP_CLI::warning( '%yWarning:%n '.trim( $message ) );
+
+				if( 'true' == $assoc_args['format'] ) {
+					array_push($warnings_json, "Warning: ".trim( $message ));
+				} else {
+					WP_CLI::warning( '%yWarning:%n '.trim( $message ) );
+				}
 				$pass = false;
+
 			} elseif ( 'RECOMMENDED' == trim( $type ) ) {
-				WP_CLI::warning( '%cRecommended:%n '.trim( $message ) );
+				if( 'true' == $assoc_args['format'] ) {
+					array_push($reccomended_json, "Reccommended: ".trim( $message ));
+
+				} else {
+					WP_CLI::warning( '%cRecommended:%n '.trim( $message ) );
+				}
 			} else {
 				WP_CLI::warning( $error );
 			}
 		}
+
+		if( 'true' == $assoc_args['format'] ) {
+			var_dump('required-json');
+			var_dump($required_json);
+			var_dump('reccomended-json');
+			var_dump($reccomended_json);
+			var_dump('warnings-json');
+			var_dump($warnings_json);
+		}
+
 		WP_CLI::line();
 		if ( empty( $errors ) ){
 			WP_CLI::success( "Theme passed review." );
@@ -95,6 +141,8 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		} else {
 			WP_CLI::line( WP_CLI::colorize( "%RFail:%n Theme did not pass review." ) );
 		}
+
+
 	}
 
 	/**
