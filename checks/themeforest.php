@@ -27,6 +27,8 @@ class Themeforest implements themecheck {
 			'/[^a-z0-9](?<!_)htmlspecialchars_decode\s?\(/' => __( 'Use wp_specialchars_decode instead', 'theme-check' ),
 			'/style_loader_tag/'                            => __( 'Do not remove core functionality', 'theme-check' ),
 			'/script_loader_tag/'                           => __( 'Do not remove core functionality', 'theme-check' ),
+			'/[^a-z0-9](?<!_)mail\s?\(/'                    => __( 'Mail functions are plugin territory', 'theme-check' ),
+			'/[^a-z0-9](?<!_)wp_mail\s?\(/'                 => __( 'Mail functions are plugin territory', 'theme-check' ),
 		);
 
 		$warn_checks = array(
@@ -34,8 +36,6 @@ class Themeforest implements themecheck {
 			'/@include/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
 			'/@require/'                                => __( 'Possible error suppression is being used', 'theme-check' ),
 			'/@file/'                                   => __( 'Possible error suppression is being used', 'theme-check' ),
-			'/[^a-z0-9](?<!_)mail\s?\(/'                => __( 'Mail functions are plugin territory', 'theme-check' ),
-			'/[^a-z0-9](?<!_)wp_mail\s?\(/'             => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)balanceTags\s?\(/'         => __( 'Possible data validation issues found. balanceTags() does not escape data', 'theme-check' ),
 			'/[^a-z0-9](?<!_)force_balance_tags\s?\(/'  => __( 'Possible data validation issues found. force_balance_tags() does not escape data', 'theme-check' ),
 			'/echo \$/'                                 => __( 'Possible data validation issues found. All dynamic data must be correctly escaped for the context where it is rendered', 'theme-check' ),
