@@ -50,13 +50,6 @@ class ThemeCheckCLI extends WP_CLI_Command {
 	 */
 	public function check( $args = array(), $assoc_args = array() ) {
 
-		// check if format is true
-		if( 'true' == $assoc_args['format'] ) {
-			// WP_CLI::success('Theme Check will format in JSON');
-		} else {
-			// WP_CLI::log('JSON False');
-		}
-
 		global $checkcount, $themechecks;
 
 		// empty array for the json format
@@ -173,12 +166,14 @@ class ThemeCheckCLI extends WP_CLI_Command {
 	/**
 	 * Check for the active theme
 	 *
+	 * [--format=<format>]
+	 * : set to true to format as json. Default: false
+	 *
 	 */
-	public function active(){
+	public function active( $args = array(), $assoc_args = array() ) {
 		$active_theme = wp_get_theme();
 		$theme_folder_name = $active_theme->template;
-		WP_CLI::success('Checking Theme Name: '.$theme_folder_name);
-		$this->check( array($theme_folder_name), array() );
+		$this->check( array($theme_folder_name), $assoc_args);
 	}
 
 }
