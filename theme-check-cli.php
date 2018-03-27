@@ -64,6 +64,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		$warnings_json = array();
 		$reccomended_json = array();
 		$errors_json = array();
+		$result_json = array();
 
 		$theme = $this->fetcher->get_check( $args[0] );
 		$files = $theme->get_files( null, -1 );
@@ -115,32 +116,56 @@ class ThemeCheckCLI extends WP_CLI_Command {
 			} elseif ( 'RECOMMENDED' == trim( $type ) ) {
 				if( 'true' == $assoc_args['format'] ) {
 					array_push($reccomended_json, "Reccommended: ".trim( $message ));
-
 				} else {
 					WP_CLI::warning( '%cRecommended:%n '.trim( $message ) );
 				}
 			} else {
-				WP_CLI::warning( $error );
+				if( 'true' == $assoc_args['format'] ) {
+					array_push($errors_json, "Error: ".trim( $error ));
+				} else {
+					WP_CLI::warning( $error );
+				}
+			}
+		}
+
+
+		WP_CLI::line();
+		if ( empty( $errors ) ){
+			if( 'true' == $assoc_args['format'] ) {
+				array_push($result_json, "Success");
+				array_push($result_json, "Theme passed review.");
+			} else {
+				WP_CLI::success( "Theme passed review." );
+			}
+		} elseif ( true === $pass ){
+			if( 'true' == $assoc_args['format'] ) {
+				array_push($result_json, "Success");
+				array_push($result_json, "Theme passed review with some recommended changes.");
+			} else {
+				WP_CLI::success( "Theme passed review with some recommended changes." );
+			}
+		} else {
+			if( 'true' == $assoc_args['format'] ) {
+				array_push($result_json, "Fail");
+				array_push($result_json, "Theme did not pass review.");
+			} else {
+				WP_CLI::line( WP_CLI::colorize( "%RFail:%n Theme did not pass review." ) );
 			}
 		}
 
 		if( 'true' == $assoc_args['format'] ) {
-			var_dump('required-json');
-			var_dump($required_json);
-			var_dump('reccomended-json');
-			var_dump($reccomended_json);
-			var_dump('warnings-json');
-			var_dump($warnings_json);
+			
+			$output = array (
+				'result' => $result_json,
+				'required' => $required_json,
+				'reccommended' => $reccomended_json,
+				'warnings' => $warnings_json,
+				'errors' => $errors_json
+			);
+
+			echo json_encode($output);
 		}
 
-		WP_CLI::line();
-		if ( empty( $errors ) ){
-			WP_CLI::success( "Theme passed review." );
-		} elseif ( true === $pass ){
-			WP_CLI::success( "Theme passed review with some recommended changes." );
-		} else {
-			WP_CLI::line( WP_CLI::colorize( "%RFail:%n Theme did not pass review." ) );
-		}
 
 
 	}
