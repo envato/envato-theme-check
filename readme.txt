@@ -57,6 +57,7 @@ If **either** of these two vars are defined a new trac tickbox will appear next 
 * `wp theme review list` to list all themes
 * `wp theme review check <themename>` to review a theme
 * `wp theme review active` to review the active theme
+* `wp theme review check <themename> --format=true` to format output as JSON
 
 == Changelog ==
 = 20151211.1 =
