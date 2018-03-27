@@ -154,7 +154,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		}
 
 		if( 'true' == $assoc_args['format'] ) {
-			
+
 			$output = array (
 				'result' => $result_json,
 				'required' => $required_json,
@@ -163,7 +163,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 				'errors' => $errors_json
 			);
 
-			echo json_encode($output);
+			echo htmlspecialchars_decode( json_encode($output, JSON_UNESCAPED_SLASHES ));
 		}
 
 
