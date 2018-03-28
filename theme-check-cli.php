@@ -55,7 +55,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		// empty array for the json format
 		$required_json = array();
 		$warnings_json = array();
-		$reccomended_json = array();
+		$recommended_json = array();
 		$errors_json = array();
 		$result_json = array();
 
@@ -108,7 +108,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 
 			} elseif ( 'RECOMMENDED' == trim( $type ) ) {
 				if( 'true' == $assoc_args['format'] ) {
-					array_push($reccomended_json, "Reccommended: ".trim( $message ));
+					array_push($recommended_json, "Recommended: ".trim( $message ));
 				} else {
 					WP_CLI::warning( '%cRecommended:%n '.trim( $message ) );
 				}
@@ -151,7 +151,7 @@ class ThemeCheckCLI extends WP_CLI_Command {
 			$output = array (
 				'result' => $result_json,
 				'required' => $required_json,
-				'reccommended' => $reccomended_json,
+				'recommended' => $recommended_json,
 				'warnings' => $warnings_json,
 				'errors' => $errors_json
 			);
