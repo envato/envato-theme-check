@@ -29,6 +29,7 @@ class Themeforest implements themecheck {
 			'/script_loader_tag/'                           => __( 'Do not remove core functionality', 'theme-check' ),
 			'/[^a-z0-9](?<!_)mail\s?\(/'                    => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)wp_mail\s?\(/'                 => __( 'Mail functions are plugin territory', 'theme-check' ),
+			'/is_plugin_active\s?\(/'                       => __( 'is_plugin_active() is not reliable. Use function_exists() or class_exists() instead', 'theme-check' ),
 		);
 
 		$warn_checks = array(
