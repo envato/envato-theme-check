@@ -10,7 +10,7 @@ class Themeforest implements themecheck {
 		$ret = true;
 
 		$req_checks = array(
-			'/@import/'                                     => __( 'Do not use @import. Instead, use wp_enqueue to load any external stylesheets and fonts correctly', 'theme-check' ),
+			'/@import url\s?\(/'                            => __( 'Do not use @import. Instead, use wp_enqueue to load any external stylesheets and fonts correctly', 'theme-check' ),
 			'/.bypostauthor{}/'                             => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/.bypostauthor {}/'                            => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/.sticky{}/'                                   => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
