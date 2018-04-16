@@ -41,6 +41,7 @@ class Themeforest implements themecheck {
 			'/[^a-z0-9](?<!_)force_balance_tags\s?\(/'  => __( 'Possible data validation issues found. force_balance_tags() does not escape data', 'theme-check' ),
 			'/echo \$/'                                 => __( 'Possible data validation issues found. All dynamic data must be correctly escaped for the context where it is rendered', 'theme-check' ),
 			'/[^a-z0-9](?<!_)\$_SERVER\s?/'             => __( 'PHP Global Variable found. Ensure the context is safe and reliable', 'theme-check' ),
+			'/remove_filter\s?\(/'                      => __( 'Themes should not remove core filters. Ensure this is a valid use case', 'theme-check' ),
 		);
 
 		$grep = '';
