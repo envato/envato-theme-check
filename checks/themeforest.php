@@ -27,6 +27,7 @@ class Themeforest implements themecheck {
 			'/[^a-z0-9](?<!_)htmlspecialchars_decode\s?\(/' => __( 'Use wp_specialchars_decode instead', 'theme-check' ),
 			'/style_loader_tag/'                            => __( 'Do not remove core functionality', 'theme-check' ),
 			'/script_loader_tag/'                           => __( 'Do not remove core functionality', 'theme-check' ),
+			'/wp_calculate_image_srcset/'                   => __( 'Do not remove core functionality', 'theme-check' ),
 			'/[^a-z0-9](?<!_)mail\s?\(/'                    => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)wp_mail\s?\(/'                 => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/is_plugin_active\s?\(/'                       => __( 'is_plugin_active() is not reliable. Use function_exists() or class_exists() instead', 'theme-check' ),
