@@ -19,16 +19,19 @@ function check_main( $theme ) {
 
 	if ( $files ) {
 		foreach( $files as $key => $filename ) {
-			if ( substr( $filename, -4 ) == '.php' && ! is_dir( $filename ) ) {
-				$php[$filename] = file_get_contents( $filename );
-				$php[$filename] = tc_strip_comments( $php[$filename] );
-			}
-			else if ( substr( $filename, -4 ) == '.css' && ! is_dir( $filename ) ) {
-				$css[$filename] = file_get_contents( $filename );
-			}
-			else {
-				$other[$filename] = ( ! is_dir($filename) ) ? file_get_contents( $filename ) : '';
-			}
+
+			if ( strpos( $filename, 'tgm-plugin-activation' ) === false && strpos( $filename, 'merlin' ) === false ) :
+				if ( substr( $filename, -4 ) == '.php' && ! is_dir( $filename ) ) {
+					$php[$filename] = file_get_contents( $filename );
+					$php[$filename] = tc_strip_comments( $php[$filename] );
+				}
+				else if ( substr( $filename, -4 ) == '.css' && ! is_dir( $filename ) ) {
+					$css[$filename] = file_get_contents( $filename );
+				}
+				else {
+					$other[$filename] = ( ! is_dir($filename) ) ? file_get_contents( $filename ) : '';
+				}
+			endif;
 		}
 
 		// run the checks

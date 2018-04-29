@@ -60,13 +60,10 @@ class Themeforest implements themecheck {
 				if ( preg_match( $key, $phpfile, $matches ) )
 				{
 					$filename = tc_filename( $php_key );
-
-					if ( strpos( $filename, 'tgm-plugin-activation' ) === false ) :
-						$error = trim( $matches[0] );
-						$grep = tc_grep( $error, $php_key );
-						$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
-						$ret = false;
-					endif;
+					$error = trim( $matches[0] );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
 				}
 			}
 		}
@@ -80,13 +77,10 @@ class Themeforest implements themecheck {
 				if ( preg_match( $key, $phpfile, $matches ) )
 				{
 					$filename = tc_filename( $php_key );
-
-					if ( strpos( $filename, 'tgm-plugin-activation' ) === false ) :
-						$error = trim( $matches[0] );
-						$grep = tc_grep( $error, $php_key );
-						$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
-						$ret = false;
-					endif;
+					$error = trim( $matches[0] );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
 				}
 			}
 		}
@@ -100,13 +94,10 @@ class Themeforest implements themecheck {
 				if ( preg_match( $key, $phpfile, $matches ) )
 				{
 					$filename = tc_filename( $php_key );
-
-					if ( strpos( $filename, 'tgm-plugin-activation' ) === false ) :
-						$error = trim( $matches[0] );
-						$grep = tc_grep( $error, $php_key );
-						$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
-						$ret = false;
-					endif;
+					$error = trim( $matches[0] );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'REQUIRED', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
 				}
 			}
 		}
@@ -120,13 +111,10 @@ class Themeforest implements themecheck {
 				if ( preg_match( $key, $phpfile, $matches ) )
 				{
 					$filename = tc_filename( $php_key );
-
-					if ( strpos( $filename, 'tgm-plugin-activation' ) === false ) :
-						$error = trim( $matches[0] );
-						$grep = tc_grep( $error, $php_key );
-						$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
-						$ret = false;
-					endif;
+					$error = trim( $matches[0] );
+					$grep = tc_grep( $error, $php_key );
+					$this->error[] = sprintf('<span class="tc-lead tc-warning">'. __( 'WARNING', 'theme-check' ) . '</span>: ' . __( 'Found %1$s in the file %2$s. %3$s. %4$s', 'theme-check' ), '<strong>' . $error . '</strong>', '<strong>' . $filename . '</strong>', $check, $grep );
+					$ret = false;
 				}
 			}
 		}
