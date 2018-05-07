@@ -37,6 +37,7 @@ class Themeforest implements themecheck {
 			'/[^a-z0-9](?<!_)mail\s?\(/'                    => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/[^a-z0-9](?<!_)wp_mail\s?\(/'                 => __( 'Mail functions are plugin territory', 'theme-check' ),
 			'/add_meta_boxes/'                              => __( 'Custom meta box functions are plugin territory', 'theme-check' ),
+			'/add_meta_box/'                                => __( 'Custom meta box functions are plugin territory', 'theme-check' ),
 			'/is_plugin_active\s?\(/'                       => __( 'is_plugin_active() is not reliable. Use function_exists() or class_exists() instead', 'theme-check' ),
 			'/add_action\( &\$this/'                        => __( 'When creating a callable, never use &$this, use $this instead', 'theme-check' ),
 			'/admin_bar_menu/'                              => __( 'Themes must not add any entries to the admin bar', 'theme-check' ),
