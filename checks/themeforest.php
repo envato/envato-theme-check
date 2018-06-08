@@ -41,8 +41,6 @@ class Themeforest implements themecheck {
 			'/is_plugin_active\s?\(/'                       => __( 'is_plugin_active() is not reliable. Use function_exists() or class_exists() instead', 'theme-check' ),
 			'/add_action\( &\$this/'                        => __( 'When creating a callable, never use &$this, use $this instead', 'theme-check' ),
 			'/admin_bar_menu/'                              => __( 'Themes must not add any entries to the admin bar', 'theme-check' ),
-			'/add_meta_boxes/'                              => __( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
-			'/add_meta_box/'                                => __( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 		);
 
 		$warn_checks = array(
@@ -57,6 +55,8 @@ class Themeforest implements themecheck {
 			'/echo \$/'                                    => __( 'Possible data validation issues found. All dynamic data must be correctly escaped for the context where it is rendered', 'theme-check' ),
 			'/[^a-z0-9](?<!_)\$_SERVER\s?/'                => __( 'PHP Global Variable found. Ensure the context is safe and reliable', 'theme-check' ),
 			'/remove_filter\s?\(/'                         => __( 'Themes should not remove core filters. Ensure this is a valid use case', 'theme-check' ),
+			'/add_meta_boxes/'                              => __( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
+			'/add_meta_box/'                                => __( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 		);
 
 		$grep = '';
