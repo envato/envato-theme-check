@@ -23,7 +23,7 @@ class Themeforest implements themecheck {
 			'/.wp-caption-text {}/'                         => __( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/key=AIza/'                                    => __( 'Remove personal API key(s). These should be user options', 'theme-check' ),
 			'/(:?^|\s)alt=""/'                              => __( 'Do not leave attributes empty', 'theme-check' ),
-			'/(:?^|\s)alt=" "/'                             > __( 'Do not leave attributes empty', 'theme-check' ),
+			'/(:?^|\s)alt=" "/'                             => __( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)title=""/'                            => __( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)title=" "/'                           => __( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)placeholder=""/'                      => __( 'Do not leave attributes empty', 'theme-check' ),
