@@ -1,9 +1,14 @@
 # Envato Theme Check
 Plugin Name: Envato Theme Check
+
 Author: Scott Parry
+
 Author URI: https://scottpary.co/
+
 Plugin URI: https://github.com/envato/Envato-Theme-Check
+
 License: GPLv2
+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 
