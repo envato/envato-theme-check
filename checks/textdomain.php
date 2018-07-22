@@ -7,7 +7,7 @@ class TextDomainCheck implements themecheck {
 		'__' => array('string', 'domain'),
 		'_e' => array('string', 'domain'),
 		'_c' => array('string', 'domain'),
-		'_n' => array('singular', 'plural', 'domain'),
+		'_n' => array('singular', 'plural', 'number', 'domain'),
 		'_n_noop' => array('singular', 'plural', 'domain'),
 		'_nc' => array('singular', 'plural', 'domain'),
 		'__ngettext' => array('singular', 'plural', 'domain'),
