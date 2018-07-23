@@ -3,7 +3,7 @@ Plugin Name: Envato Theme Check
 
 Author: Scott Parry
 
-Author URI: https://scottpary.co/
+Author URI: https://scottparry.co/
 
 Plugin URI: https://github.com/envato/Envato-Theme-Check
 
