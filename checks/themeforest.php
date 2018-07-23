@@ -40,7 +40,6 @@ class Themeforest implements themecheck {
 			'/is_plugin_active\s?\(/'                       => esc_html__( 'is_plugin_active() is not reliable. Use function_exists() or class_exists() instead', 'theme-check' ),
 			'/add_action\( &\$this/'                        => esc_html__( 'When creating a callable, never use &$this, use $this instead', 'theme-check' ),
 			'/admin_bar_menu/'                              => esc_html__( 'Themes must not add any entries to the admin bar', 'theme-check' ),
-			'/(^|\s)(__|_e|_n|_x|_nx|_ex)\s*?\(/'           => esc_html__( 'All translatable strings must be escaped to prevent malicious code injection from a translation', 'theme-check' ),
 		);
 
 		$warn_checks = array(
