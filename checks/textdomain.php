@@ -76,7 +76,7 @@ class TextDomainCheck implements themecheck {
 								$new_args[] = $text;
 								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
 								. sprintf (
-									__( 'Found a translation function that has an incorrect number of arguments. Function %1$s, with the arguments %2$s', 'theme-check' ),
+									__( 'Found a translation function that is missing a text-domain. Function %1$s, with the arguments %2$s in file: <strong>'.$php_key.'</strong>', 'theme-check' ),
 									'<strong>' . $func . '</strong>',
 									'<strong>' . implode(', ',$new_args) . '</strong>'
 								);
