@@ -56,6 +56,7 @@ class Themeforest implements themecheck {
 			'/remove_filter\s?\(/'                          => esc_html__( 'Themes should not remove core filters. Ensure this is a valid use case', 'theme-check' ),
 			'/add_meta_boxes/'                              => esc_html__( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 			'/add_meta_box/'                                => esc_html__( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
+			'/register_widget\s?\(/'                        => esc_html__( 'Custom widgets are plugin territory', 'theme-check' ),
 		);
 
 		$grep = '';
