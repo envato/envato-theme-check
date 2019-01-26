@@ -121,6 +121,9 @@ class TextDomainCheck implements themecheck {
 		}
 
 		$domains = array_unique($domains);
+		// Now, Remove any empty values from array.
+		$domains = array_filter($domains);
+		
 		$domainlist = implode( ', ', $domains );
 		$domainscount = count($domains);
 
