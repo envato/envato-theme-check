@@ -39,6 +39,7 @@ form {
 	background:#dfdfdf url("gray-grad.png") repeat-x left top;
 	font-size:20px;
 	border-bottom:1px solid #ccc;
+	padding-bottom: 20px;
 }
 .theme-check p {
 	padding:5px 20px;
