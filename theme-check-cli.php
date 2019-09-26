@@ -76,17 +76,19 @@ class ThemeCheckCLI extends WP_CLI_Command {
 
 		foreach( $files as $key => $filename )
 		{
-			if ( substr( $filename, -4 ) == '.php' )
-			{
-				$php[ $filename ] = php_strip_whitespace( $filename );
-			}
-			else if ( substr( $filename, -4 ) == '.css' )
-			{
-				$css[ $filename ] = file_get_contents( $filename );
-			}
-			else
-			{
-				$other[ $filename ] = ( ! is_dir( $filename ) ) ? file_get_contents( $filename ) : '';
+			if ( strpos( $filename, 'tgm-plugin-activation' ) === false && strpos( $filename, 'merlin' ) === false ) {
+				if ( substr( $filename, -4 ) == '.php' )
+				{
+					$php[ $filename ] = php_strip_whitespace( $filename );
+				}
+				else if ( substr( $filename, -4 ) == '.css' )
+				{
+					$css[ $filename ] = file_get_contents( $filename );
+				}
+				else
+				{
+					$other[ $filename ] = ( ! is_dir( $filename ) ) ? file_get_contents( $filename ) : '';
+				}
 			}
 		}
 
