@@ -228,9 +228,13 @@ class ThemeCheckCLI extends WP_CLI_Command {
 	*/
 	public function active( $args = array(), $assoc_args = array() )
 	{
-		$active_theme      = wp_get_theme();
+		$active_theme = wp_get_theme();
 		$theme_folder_name = $active_theme->template;
-
+		// Next four lines set up $themename and $data for wp cli version, as check_main is never run
+		global $themename, $data;
+		$themename = $theme_folder_name;
+		$theme = get_theme_root( $theme_folder_name ) . "/$theme_folder_name";
+		$data = tc_get_theme_data( $theme . '/style.css' );
 		$this->check( array($theme_folder_name), $assoc_args);
 	}
 }
