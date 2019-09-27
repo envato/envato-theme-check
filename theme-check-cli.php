@@ -61,7 +61,9 @@ class ThemeCheckCLI extends WP_CLI_Command {
 		checkcount();
 
 		// prevent undefined index errors
-		$assoc_args['format'] = '';
+		if (!array_key_exists('format', $assoc_args)) {
+			$assoc_args['format'] = '';
+		}
 
 		// empty array for the json format
 		$required_json    = array();
