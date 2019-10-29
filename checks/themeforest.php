@@ -41,6 +41,7 @@ class Themeforest implements themecheck {
 			'/add_action\( &\$this/'                        => esc_html__( 'When creating a callable, never use &$this, use $this instead', 'theme-check' ),
 			'/admin_bar_menu/'                              => esc_html__( 'Themes must not add any entries to the admin bar', 'theme-check' ),
 			'/create_function\s?\(/'                        => esc_html__( 'The create_function() function has been deprecated as of PHP 7.2.0 and must no longer be used', 'theme-check' ),
+			'/marketplace\.envato\.com/'                    => esc_html__( 'The legacy API at marketplace.envato.com has been retired and must no longer be used', 'theme-check' ),
 		);
 
 		$warn_checks = array(
@@ -58,6 +59,7 @@ class Themeforest implements themecheck {
 			'/add_meta_boxes/'                                => esc_html__( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 			'/add_meta_box/'                                  => esc_html__( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 			'/register_widget\s?\(/'                          => esc_html__( 'Custom widgets are plugin territory', 'theme-check' ),
+			'/\/api_keys\/edit/'                              => esc_html__( 'Likely contains instructions to generate keys for the retired legacy API', 'theme-check' ),
 		);
 
 		$grep = '';
