@@ -61,6 +61,7 @@ class Themeforest implements themecheck {
 			'/register_widget\s?\(/'                          => esc_html__( 'Custom widgets are plugin territory', 'theme-check' ),
 			'/\/api_keys\/edit/'                              => esc_html__( 'Likely contains instructions to generate keys for the retired legacy API', 'theme-check' ),
 			'/install_code|div_code_name|tmpcontentx|wp_temp_setupx|wp_vcd/' => esc_html__( 'Possible WP VCD hack code present', 'theme-check' ),
+			'/p\/165bl\/151c_\//' 						      => esc_html__( 'Possible SoakSoak .ico hack code present', 'theme-check' ),
 		);
 
 		$grep = '';
