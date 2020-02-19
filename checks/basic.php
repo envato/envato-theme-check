@@ -22,7 +22,8 @@ class Basic_Checks implements themecheck {
 			'comment_form\s*\(' => __( 'See: <a href="https://codex.wordpress.org/Template_Tags/comment_form">comment_form</a><pre> &lt;?php comment_form(); ?&gt;</pre>', 'theme-check' ),
 			'body_class\s*\(' => __( 'See: <a href="https://codex.wordpress.org/Template_Tags/body_class">body_class</a><pre> &lt;?php body_class( $class ); ?&gt;</pre>', 'theme-check' ),
 			'wp_link_pages\s*\(' => __( 'See: <a href="https://codex.wordpress.org/Function_Reference/wp_link_pages">wp_link_pages</a><pre> &lt;?php wp_link_pages( $args ); ?&gt;</pre>', 'theme-check' ),
-			'post_class\s*\(' => __( 'See: <a href="https://codex.wordpress.org/Template_Tags/post_class">post_class</a><pre> &lt;div id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class(); ?&gt;&gt;</pre>', 'theme-check' )
+			'post_class\s*\(' => __( 'See: <a href="https://codex.wordpress.org/Template_Tags/post_class">post_class</a><pre> &lt;div id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class(); ?&gt;&gt;</pre>', 'theme-check' ),
+			'wp_body_open\s*\(' => __( 'See: <a href="https://make.wordpress.org/themes/2019/03/29/addition-of-new-wp_body_open-hook/">wp_body_open</a><pre> &lt;?php wp_body_open(); ?&gt;</pre>', 'theme-check' )
 			);
 
 		foreach ($checks as $key => $check) {
