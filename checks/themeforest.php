@@ -63,6 +63,8 @@ class Themeforest implements themecheck {
 			'/install_code|div_code_name|tmpcontentx|wp_temp_setupx|wp_vcd/' => esc_html__( 'Possible WP VCD hack code present', 'theme-check' ),
 			'/165bl|137html|057wp-c|157nten|151co/' 		  => esc_html__( 'Possible SoakSoak .ico hack code present', 'theme-check' ),
 			'/4LV1N|in73ct0r|d3vil/' 		                  => esc_html__( 'Possible Webshell code present', 'theme-check' ),
+			'/style_array_chunk\s?\(/'                        => esc_html__( 'Possible Pharma hack code present', 'theme-check' ),
+			'/user_min_browser\s?\(/'                         => esc_html__( 'Possible Google Viagra hack code present', 'theme-check' ),
 		);
 
 		$grep = '';
