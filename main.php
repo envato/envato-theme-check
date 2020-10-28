@@ -34,29 +34,29 @@ function check_main( $theme ) {
 			endif;
 		}
 
-		// run the checks
-		$success = run_themechecks($php, $css, $other);
+		// run the checks.
+		$success = run_themechecks( $php, $css, $other );
 
 		global $checkcount;
 
-		// second loop, to display the errors
-		echo '<h2>' . __( 'Theme Info', 'theme-check' ) . ': </h2>';
+		// second loop, to display the errors.
+		echo '<h2>' . esc_html__( 'Theme Info', 'theme-check' ) . ': </h2>';
 		echo '<div class="theme-info">';
-		if (file_exists( trailingslashit( WP_CONTENT_DIR . '/themes' ) . trailingslashit( basename( $theme ) ) . 'screenshot.png' ) ) {
+		if ( file_exists( trailingslashit( WP_CONTENT_DIR . '/themes' ) . trailingslashit( basename( $theme ) ) . 'screenshot.png' ) ) {
 			$image = getimagesize( $theme . '/screenshot.png' );
 			echo '<div style="float:right" class="theme-info"><img style="max-height:180px;" src="' . trailingslashit( WP_CONTENT_URL . '/themes' ) . trailingslashit( basename( $theme ) ) . 'screenshot.png" />';
-			echo '<br /><div style="text-align:center">' . $image[0] . 'x' . $image[1] . ' ' . round( filesize( $theme . '/screenshot.png' )/1024 ) . 'k</div></div>';
+			echo '<br /><div style="text-align:center">' . $image[0] . 'x' . $image[1] . ' ' . round( filesize( $theme . '/screenshot.png' ) / 1024 ) . 'k</div></div>';
 		}
 
-		echo ( !empty( $data[ 'Title' ] ) ) ? '<p><label>' . __( 'Title', 'theme-check' ) . '</label><span class="info">' . $data[ 'Title' ] . '</span></p>' : '';
-		echo ( !empty( $data[ 'Version' ] ) ) ? '<p><label>' . __( 'Version', 'theme-check' ) . '</label><span class="info">' . $data[ 'Version' ] . '</span></p>' : '';
-		echo ( !empty( $data[ 'AuthorName' ] ) ) ? '<p><label>' . __( 'Author', 'theme-check' ) . '</label><span class="info">' . $data[ 'AuthorName' ] . '</span></p>' : '';
-		echo ( !empty( $data[ 'AuthorURI' ] ) ) ? '<p><label>' . __( 'Author URI', 'theme-check' ) . '</label><span class="info"><a href="' . $data[ 'AuthorURI' ] . '">' . $data[ 'AuthorURI' ] . '</a>' . '</span></p>' : '';
-		echo ( !empty( $data[ 'URI' ] ) ) ? '<p><label>' . __( 'Theme URI', 'theme-check' ) . '</label><span class="info"><a href="' . $data[ 'URI' ] . '">' . $data[ 'URI' ] . '</a>' . '</span></p>' : '';
-		echo ( !empty( $data[ 'License' ] ) ) ? '<p><label>' . __( 'License', 'theme-check' ) . '</label><span class="info">' . $data[ 'License' ] . '</span></p>' : '';
-		echo ( !empty( $data[ 'License URI' ] ) ) ? '<p><label>' . __( 'License URI', 'theme-check' ) . '</label><span class="info">' . $data[ 'License URI' ] . '</span></p>' : '';
-		echo ( !empty( $data[ 'Tags' ] ) ) ? '<p><label>' . __( 'Tags', 'theme-check' ) . '</label><span class="info">' . implode( $data[ 'Tags' ], ', ') . '</span></p>' : '';
-		echo ( !empty( $data[ 'Description' ] ) ) ? '<p><label>' . __( 'Description', 'theme-check' ) . '</label><span class="info">' . $data[ 'Description' ] . '</span></p>' : '';
+		echo ( ! empty( $data['Title'] ) ) ? '<p><label>' . esc_html__( 'Title', 'theme-check' ) . '</label><span class="info">' . esc_html( $data['Title'] ) . '</span></p>' : '';
+		echo ( ! empty( $data['Version'] ) ) ? '<p><label>' . esc_html__( 'Version', 'theme-check' ) . '</label><span class="info">' . esc_html( $data['Version'] ) . '</span></p>' : '';
+		echo ( ! empty( $data['AuthorName'] ) ) ? '<p><label>' . esc_html__( 'Author', 'theme-check' ) . '</label><span class="info">' . esc_html( $data['AuthorName'] ) . '</span></p>' : '';
+		echo ( ! empty( $data['AuthorURI'] ) ) ? '<p><label>' . esc_html__( 'Author URI', 'theme-check' ) . '</label><span class="info"><a href="' . esc_attr( $data['AuthorURI'] ) . '">' . $data['AuthorURI'] . '</a></span></p>' : '';
+		echo ( ! empty( $data['URI'] ) ) ? '<p><label>' . esc_html__( 'Theme URI', 'theme-check' ) . '</label><span class="info"><a href="' . esc_attr( $data['URI'] ) . '">' . $data['URI'] . '</a></span></p>' : '';
+		echo ( ! empty( $data['License'] ) ) ? '<p><label>' . esc_html__( 'License', 'theme-check' ) . '</label><span class="info">' . esc_html( $data['License'] ) . '</span></p>' : '';
+		echo ( ! empty( $data['License URI'] ) ) ? '<p><label>' . esc_html__( 'License URI', 'theme-check' ) . '</label><span class="info">' . $data['License URI'] . '</span></p>' : '';
+		echo ( ! empty( $data['Tags'] ) ) ? '<p><label>' . esc_html__( 'Tags', 'theme-check' ) . '</label><span class="info">' . implode( ', ', $data['Tags'] ) . '</span></p>' : '';
+		echo ( ! empty( $data['Description'] ) ) ? '<p><label>' . esc_html__( 'Description', 'theme-check' ) . '</label><span class="info">' . $data['Description'] . '</span></p>' : '';
 
 		if ( $data[ 'Template' ] ) {
 		if ( $data['Template Version'] > $parent_data['Version'] ) {
