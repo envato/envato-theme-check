@@ -104,12 +104,22 @@ class TextDomainCheck implements themecheck {
 					--$parens_balance;
 					if ($in_func && 0 == $parens_balance) {
 						if (!$found_domain) {
-							$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
-							. sprintf (
-								__( 'Found a translation function that is missing a text-domain. Function %1$s, with the arguments %2$s', 'theme-check' ),
-								'<strong>' . $func . '</strong>',
-								'<strong>' . implode(', ',$args) . '</strong>'
-							);
+							$args = implode(', ',$args);
+							if ( empty( $args ) ) {
+								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
+								. sprintf (
+									__( 'Found a translation function that is missing a text-domain. Function %1$s, with empty arguments in file: <strong>'. tc_filename( $php_key ) .'</strong>', 'theme-check' ),
+									'<strong>' . $func . '</strong>',
+								);
+							} else {
+								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
+								. sprintf (
+									__( 'Found a translation function that is missing a text-domain. Function %1$s, with the arguments %2$s', 'theme-check' ),
+									'<strong>' . $func . '</strong>',
+									'<strong>' . $args . '</strong>'
+								);
+							}
+							
 						}
 						$in_func = false;
 						$func='';
