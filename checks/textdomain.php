@@ -109,7 +109,7 @@ class TextDomainCheck implements themecheck {
 								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
 								. sprintf (
 									__( 'Found a translation function that is missing a text-domain. Function %1$s, with empty arguments in file: <strong>'. tc_filename( $php_key ) .'</strong>', 'theme-check' ),
-									'<strong>' . $func . '</strong>',
+									'<strong>' . $func . '</strong>'
 								);
 							} else {
 								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
@@ -119,7 +119,7 @@ class TextDomainCheck implements themecheck {
 									'<strong>' . $args . '</strong>'
 								);
 							}
-							
+
 						}
 						$in_func = false;
 						$func='';
@@ -133,7 +133,7 @@ class TextDomainCheck implements themecheck {
 		$domains = array_unique($domains);
 		// Now, Remove any empty values from array.
 		$domains = array_filter($domains);
-		
+
 		$domainlist = implode( ', ', $domains );
 		$domainscount = count($domains);
 
