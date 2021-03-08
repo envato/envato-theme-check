@@ -60,7 +60,7 @@ class Themeforest implements themecheck {
 			'/add_meta_box/'                                  => esc_html__( 'Custom meta box functions are allowed for design only. Ensure this is a valid use case', 'theme-check' ),
 			'/register_widget\s?\(/'                          => esc_html__( 'Custom widgets are plugin territory', 'theme-check' ),
 			'/\/api_keys\/edit/'                              => esc_html__( 'Likely contains instructions to generate keys for the retired legacy API', 'theme-check' ),
-			'/install_code|div_code_name|tmpcontentx|wp_temp_setupx|wp_vcd/' => esc_html__( 'Possible WP VCD hack code present', 'theme-check' ),
+			'/install_code|div_code_name|tmpcontentx|wp_temp_setupx|wp_vcd|edoced_46esab/' => esc_html__( 'Possible WP VCD hack code present', 'theme-check' ),
 			'/165bl|137html|057wp-c|157nten|151co/' 		  => esc_html__( 'Possible SoakSoak .ico hack code present', 'theme-check' ),
 			'/4LV1N|in73ct0r|d3vil/' 		                  => esc_html__( 'Possible Webshell code present', 'theme-check' ),
 			'/style_array_chunk\s?\(/'                        => esc_html__( 'Possible Pharma hack code present', 'theme-check' ),
