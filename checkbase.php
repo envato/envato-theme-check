@@ -162,7 +162,14 @@ function tc_trac( $e ) {
 function listdir( $dir ) {
 	$files = array();
 	$dir_iterator = new RecursiveDirectoryIterator( $dir );
-	$iterator = new RecursiveIteratorIterator($dir_iterator, RecursiveIteratorIterator::SELF_FIRST);
+	$filter = new \RecursiveCallbackFilterIterator($dir_iterator, function ($current, $key, $iterator) {
+		// Skip hidden files and directories like .git
+		if ($current->getFilename()[0] === '.') {
+			return false;
+		}
+		return true;
+	});
+	$iterator = new \RecursiveIteratorIterator($filter, RecursiveIteratorIterator::SELF_FIRST);
 
 	foreach ($iterator as $file) {
     	array_push( $files, $file->getPathname() );
