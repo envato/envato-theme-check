@@ -114,7 +114,7 @@ class TextDomainCheck implements themecheck {
 							} else {
 								$this->error[] = '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check' ) . '</span>: '
 								. sprintf (
-									__( 'Found a translation function that is missing a text-domain. Function %1$s, with the arguments %2$s', 'theme-check' ),
+									__( 'Found a translation function that is missing a text-domain. Function %1$s, with the arguments %2$s in file: <strong>'. tc_filename( $php_key ) .'</strong>', 'theme-check' ),
 									'<strong>' . $func . '</strong>',
 									'<strong>' . $args . '</strong>'
 								);
