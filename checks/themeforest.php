@@ -22,8 +22,6 @@ class Themeforest implements themecheck {
 			'/.wp-caption-text{}/'                          => esc_html__( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/.wp-caption-text {}/'                         => esc_html__( 'Do not use empty CSS classes to try to trick theme check', 'theme-check' ),
 			'/key=AIza/'                                    => esc_html__( 'Remove personal API key(s). These should be user options', 'theme-check' ),
-			'/(:?^|\s)alt=""/'                              => esc_html__( 'Do not leave attributes empty', 'theme-check' ),
-			'/(:?^|\s)alt=" "/'                             => esc_html__( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)title=""/'                            => esc_html__( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)title=" "/'                           => esc_html__( 'Do not leave attributes empty', 'theme-check' ),
 			'/(:?^|\s)placeholder=""/'                      => esc_html__( 'Do not leave attributes empty', 'theme-check' ),
