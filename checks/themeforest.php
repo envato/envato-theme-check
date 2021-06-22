@@ -64,6 +64,7 @@ class Themeforest implements themecheck {
 			'/style_array_chunk\s?\(/'                        => esc_html__( 'Possible Pharma hack code present', 'theme-check' ),
 			'/user_min_browser\s?\(/'                         => esc_html__( 'Possible Google Viagra hack code present', 'theme-check' ),
 			'/String.fromCharCode|lovegreenpencils|secondaryinformtrand|list.insertBefore(s, list.childNodes[0])/' => esc_html__( 'Possible LoveGreenPencils malware code present', 'theme-check' ),
+			'/_0x230d|279875vBeEEE|1fashtG|atxcoder\s?\(/'    => esc_html__( 'Possible Kaswara malware code present', 'theme-check' ),
 		);
 
 		$grep = '';
