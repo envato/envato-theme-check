@@ -66,6 +66,7 @@ class Themeforest implements themecheck {
 			'/String.fromCharCode|lovegreenpencils|secondaryinformtrand|list.insertBefore(s, list.childNodes[0])/' => esc_html__( 'Possible LoveGreenPencils malware code present', 'theme-check' ),
 			'/_0x230d|279875vBeEEE|1fashtG|atxcoder\s?\(/'    => esc_html__( 'Possible Kaswara malware code present', 'theme-check' ),
 			'/date2021|deunco|Mjhn|Сканирование\s?\(/'        => esc_html__( 'Possible Capoae malware code present', 'theme-check' ),
+			'/hex2bin|hex2dec\s?\(/'                          => esc_html__( 'Possible Push Notification Scam', 'theme-check' ),
 		);
 
 		$grep = '';
