@@ -17,7 +17,7 @@ class NoHiddenAdminBar implements themecheck {
 				$filename = tc_filename( $file_path );
 
 				if ( preg_match( $php_regex, $file_content, $matches ) ) {
-					$this->error[] = sprintf( '<span class="tc-lead tc-required">' . __( 'REQUIRED', 'theme-check').'</span>: ' . __( 'You are not allowed to hide the admin bar.', 'theme-check' ), 
+					$this->error[] = sprintf( '<span class="tc-lead tc-required">' . __( 'REQUIRED', 'theme-check').'</span>: ' . __( 'You are not allowed to hide the admin bar. File : %1$s', 'theme-check' ), 
 						'<strong>' . $filename . '</strong>');	
 					$ret = false;			
 				}
@@ -29,7 +29,7 @@ class NoHiddenAdminBar implements themecheck {
 				$filename = tc_filename( $file_path );
 
 				if ( preg_match( $css_regex, $file_content, $matches ) ) {
-					$this->error[] = sprintf( '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check').'</span>: ' . __( 'The theme is using `#wpadminbar`. Hiding the admin bar is not allowed.', 'theme-check' ), 
+					$this->error[] = sprintf( '<span class="tc-lead tc-warning">' . __( 'WARNING', 'theme-check').'</span>: ' . __( 'The theme is using `#wpadminbar`. Hiding the admin bar is not allowed. File : %1$s', 'theme-check' ), 
 						'<strong>' . $filename . '</strong>');		
 				}
 			}
