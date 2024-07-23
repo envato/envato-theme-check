@@ -59,9 +59,6 @@ class File_Check implements themecheck {
 			'\.sql'               => __( 'SQL dump file', 'theme-check' ),
 			'__MACOSX'            => __( 'OSX system file', 'theme-check' ),
 			'\.lubith'            => __( 'Lubith theme generator file', 'theme-check' ),
-			'\.wie'               => __( 'Widget import file', 'theme-check' ),
-			'\.dat'               => __( 'Customizer import file', 'theme-check' ),
-			'\.xml'               => __( 'XML file', 'theme-check' ),
 			'\.sh'                => __( 'Shell script file', 'theme-check' ),
 			'favicon\.ico'        => __( 'Favicon', 'theme-check' ),
 		);
