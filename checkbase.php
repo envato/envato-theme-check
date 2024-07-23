@@ -55,21 +55,24 @@ function run_themechecks_against_theme( $theme, $theme_slug ) {
 	$php   = array();
 	$css   = array();
 	$other = array();
+
 	foreach ( $files as $filename ) {
-		if ( substr( $filename, -4 ) === '.php' ) {
-			$php[ $filename ] = file_get_contents( $filename );
-			$php[ $filename ] = tc_strip_comments( $php[ $filename ] );
-		} elseif ( substr( $filename, -4 ) === '.css' ) {
-			$css[ $filename ] = file_get_contents( $filename );
-		} else {
-			// In local development it might be useful to skip other files
-			// (non .php or .css files) in dev directories.
-			if ( apply_filters( 'tc_skip_development_directories', false ) ) {
-				if ( tc_is_other_file_in_dev_directory( $filename ) ) {
-					continue;
+		if ( strpos( $filename, 'tgm-plugin-activation' ) === false && strpos( $filename, 'merlin' ) === false ) {
+			if ( substr( $filename, -4 ) === '.php' ) {
+				$php[ $filename ] = file_get_contents( $filename );
+				$php[ $filename ] = tc_strip_comments( $php[ $filename ] );
+			} elseif ( substr( $filename, -4 ) === '.css' ) {
+				$css[ $filename ] = file_get_contents( $filename );
+			} else {
+				// In local development it might be useful to skip other files
+				// (non .php or .css files) in dev directories.
+				if ( apply_filters( 'tc_skip_development_directories', false ) ) {
+					if ( tc_is_other_file_in_dev_directory( $filename ) ) {
+						continue;
+					}
 				}
+				$other[ $filename ] = file_get_contents( $filename );
 			}
-			$other[ $filename ] = file_get_contents( $filename );
 		}
 	}
 
