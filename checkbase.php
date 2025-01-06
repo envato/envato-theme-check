@@ -57,7 +57,7 @@ function run_themechecks_against_theme( $theme, $theme_slug ) {
 	$other = array();
 
 	foreach ( $files as $filename ) {
-		if ( strpos( $filename, 'tgm-plugin-activation' ) === false && strpos( $filename, 'merlin' ) === false ) {
+		if ( strpos( $filename, 'tgm-plugin-activation' ) === false && strpos( $filename, 'class-merlin' ) === false ) {
 			if ( substr( $filename, -4 ) === '.php' ) {
 				$php[ $filename ] = file_get_contents( $filename );
 				$php[ $filename ] = tc_strip_comments( $php[ $filename ] );
