@@ -101,7 +101,13 @@ class ThemeCheckCLI extends WP_CLI_Command {
             }
         }
 
-        $success = run_themechecks($php, $css, $other);
+        // Pass theme context so checks can access slug and theme data
+        $context = array(
+            'theme' => $theme,
+            'slug' => $theme->get_stylesheet()
+        );
+
+        $success = run_themechecks($php, $css, $other, $context);
         $errors  = array();
 
         foreach ( $themechecks as $check )
