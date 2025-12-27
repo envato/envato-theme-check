@@ -39,6 +39,10 @@ class Link_Check implements themecheck {
 	 * @param array $other_files Folder names, file paths and content for other files.
 	 */
 	public function check( $php_files, $css_files, $other_files ) {
+		if ( ! $this->theme ) {
+			return true;
+		}
+
 
 		foreach ( $php_files as $php_key => $phpfile ) {
 			checkcount();

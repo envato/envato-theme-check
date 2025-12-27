@@ -6,6 +6,13 @@ include 'checkbase.php';
 include 'main.php';
 
 class ThemeCheckCLI extends WP_CLI_Command {
+
+    /**
+     * Theme fetcher instance
+     * @var \WP_CLI\Fetchers\Theme
+     */
+    public $fetcher;
+
     function __construct()
     {
         parent::__construct();

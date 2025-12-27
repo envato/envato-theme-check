@@ -38,6 +38,10 @@ class URI_Check implements themecheck {
 	 */
 	public function check( $php_files, $css_files, $other_files ) {
 		checkcount();
+		if ( ! $this->theme ) {
+			return true;
+		}
+
 		$ret = true;
 
 		if ( ! empty( $this->theme->get( 'ThemeURI' ) ) ) {

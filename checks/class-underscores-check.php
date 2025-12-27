@@ -43,6 +43,10 @@ class Underscores_Check implements themecheck {
 		$ret = true;
 
 		checkcount();
+		if ( ! $this->theme ) {
+			return true;
+		}
+
 		if ( ! empty( $this->theme->get( 'AuthorURI' ) ) || ! empty( $this->theme->get( 'ThemeURI' ) ) ) {
 
 			if (
