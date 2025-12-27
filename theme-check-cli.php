@@ -126,7 +126,9 @@ class ThemeCheckCLI extends WP_CLI_Command {
 
         foreach ( $errors as $error )
         {
-            list( $type, $message ) = explode( ':', $error, 2 );
+            $parts = explode( ':', $error, 2 );
+            $type = isset( $parts[0] ) ? $parts[0] : '';
+            $message = isset( $parts[1] ) ? $parts[1] : '';
 
             if ( 'REQUIRED' == trim( $type ) )
             {
