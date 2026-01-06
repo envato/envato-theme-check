@@ -6,6 +6,13 @@ include 'checkbase.php';
 include 'main.php';
 
 class ThemeCheckCLI extends WP_CLI_Command {
+
+    /**
+     * Theme fetcher instance
+     * @var \WP_CLI\Fetchers\Theme
+     */
+    public $fetcher;
+
     function __construct()
     {
         parent::__construct();
@@ -94,7 +101,13 @@ class ThemeCheckCLI extends WP_CLI_Command {
             }
         }
 
-        $success = run_themechecks($php, $css, $other);
+        // Pass theme context so checks can access slug and theme data
+        $context = array(
+            'theme' => $theme,
+            'slug' => $theme->get_stylesheet()
+        );
+
+        $success = run_themechecks($php, $css, $other, $context);
         $errors  = array();
 
         foreach ( $themechecks as $check )
@@ -119,7 +132,9 @@ class ThemeCheckCLI extends WP_CLI_Command {
 
         foreach ( $errors as $error )
         {
-            list( $type, $message ) = explode( ':', $error, 2 );
+            $parts = explode( ':', $error, 2 );
+            $type = isset( $parts[0] ) ? $parts[0] : '';
+            $message = isset( $parts[1] ) ? $parts[1] : '';
 
             if ( 'REQUIRED' == trim( $type ) )
             {
